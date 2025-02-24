@@ -23,4 +23,10 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.get('/:storyID', async (req, res) => {
+    const story = await Story.findById(req.params.storyID).populate('author');
+    const editPrivilege = req.session.user._id == story.author._id;
+    res.render('stories/show.ejs', { story, editPrivilege });
+});
+
 module.exports = router;

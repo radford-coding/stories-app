@@ -1,0 +1,25 @@
+<%- include('../partials/_htmlhead') %>
+<title><%= story.name %></title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1><%= story.name %></h1>
+    <h2>by <%= story.author.alias %></h2>
+    <br>
+
+    <% if (editPrivilege) { %>
+    <a href="/stories/<%= story._id %>/edit"><input type="button" value="Edit <%= story.name %>"></a>
+    <br><br>
+    <% }; %>
+    <p><%= story.body %></p>
+
+    <br><br>
+    <% if (editPrivilege) { %>
+    <form action="/stories/<%= story._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= story.name %></button>
+    </form>
+    <% }; %>
+</body>
+
+</html>
