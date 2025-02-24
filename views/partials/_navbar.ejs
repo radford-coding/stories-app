@@ -1,7 +1,8 @@
 <nav>
     <a href="/">home</a>
     <% if (user) { %>
-        hi user
+        <a href="/stories">stories</a>
+        <a href="/stories/new">new story</a>
     <% } else { %>
         <a href="/auth/login">log in</a>
         <a href="/auth/register">register</a>

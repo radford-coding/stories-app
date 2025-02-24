@@ -1,0 +1,15 @@
+<%- include('../partials/_htmlhead') %>
+<title>stories</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>stories index</h1>
+    <ul>
+        <% stories.forEach(story => { %>
+            <li><a href="/recipes/<%= story._id %>"><%= story.name %></a></li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>

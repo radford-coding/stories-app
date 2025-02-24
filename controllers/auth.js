@@ -30,8 +30,8 @@ router.post('/register', async (req, res) => {
         req.body.password = hashedPassword;
         await User.create(req.body);
         res.redirect('/auth/login');
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
         res.redirect('/');
     }
 });
@@ -54,8 +54,8 @@ router.post('/login', async (req, res) => {
             _id: userInDatabase._id
         };
         res.redirect('/');
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
         res.redirect('/');
     }
 });

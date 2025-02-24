@@ -1,0 +1,20 @@
+<%- include('../partials/_htmlhead') %>
+<title>new story</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>add new story</h1>
+    <form action="/stories" method="POST">
+        <label for="name">story name:</label>
+        <input type="text" name="name">
+        <br><br>
+        <label for="body">story:
+            <textarea name="body" id="body"></textarea>
+        </label>
+        <br><br>
+        <button type="submit">submit</button>
+    </form>
+</body>
+
+</html>

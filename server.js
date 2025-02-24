@@ -11,6 +11,7 @@ const path = require('path');
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
+const storiesController = require('./controllers/stories.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -32,6 +33,7 @@ app.use(
 app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSignedIn);
+app.use('/stories', storiesController);
 
 
 app.get('/', (req, res) => {
