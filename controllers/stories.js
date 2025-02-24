@@ -34,4 +34,14 @@ router.delete('/:storyID', async (req, res) => {
     res.redirect('/stories');
 });
 
+router.get('/:storyID/edit', async (req, res) => {
+    const story = await Story.findById(req.params.storyID);
+    res.render('stories/edit.ejs', { story });
+});
+
+router.put('/:storyID', async (req, res) => {
+    await Story.findByIdAndUpdate(req.params.storyID, req.body);
+    res.redirect(`/stories/${req.params.storyID}`);
+});
+
 module.exports = router;

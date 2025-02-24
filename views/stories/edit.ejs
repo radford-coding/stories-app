@@ -1,0 +1,20 @@
+<%- include('../partials/_htmlhead') %>
+<title>edit <%= story.name %></title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>edit <%= story.name %></h1>
+    <form action="/stories/<%= story._id %>?_method=PUT" method="POST">
+        <label for="name">story name:</label>
+        <input type="text" name="name" value="<%= story.name %>">
+        <br><br>
+        <label for="body">story:
+            <textarea name="body" id="body"><%= story.body %></textarea>
+        </label>
+        <br><br>
+        <button type="submit">update</button>
+    </form>
+</body>
+
+</html>
