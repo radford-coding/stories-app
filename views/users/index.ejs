@@ -1,0 +1,14 @@
+<%- include('../partials/_htmlhead') %>
+<title>community</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>all users</h1>
+    <ul>
+        <% users.forEach(user => { %>
+            <li><a href="/users/<%= user._id %>"><%= user.username %></a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

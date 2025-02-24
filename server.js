@@ -12,6 +12,7 @@ const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
 const storiesController = require('./controllers/stories.js');
+const usersController = require('./controllers/users.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -23,18 +24,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: true,
-    })
-);
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+}));
 app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/stories', storiesController);
-
+app.use('/users', usersController);
 
 app.get('/', (req, res) => {
     res.render('index.ejs', { user: req.session.user, });

@@ -1,3 +1,7 @@
 body {
     background-color: antiquewhite;
 }
+
+nav * {
+    margin: 0 10px;
+}
