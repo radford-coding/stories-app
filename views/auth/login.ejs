@@ -1,0 +1,18 @@
+<%- include('../partials/_htmlhead') %>
+  <title>Login</title>
+</head>
+<body>
+  <%- include('../partials/_navbar') %>
+  <h1>Log in</h1>
+  <br>
+  <form action="/auth/sign-in" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+    <br><br>
+    <button type="submit">Log in</button>
+  </form>
+</body>
+</html>

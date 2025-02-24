@@ -8,6 +8,9 @@ const morgan = require('morgan');
 const session = require('express-session');
 const port = process.env.PORT ? process.env.PORT : '3000';
 const path = require('path');
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
+const authController = require('./controllers/auth.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -26,6 +29,10 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passUserToView);
+app.use('/auth', authController);
+app.use(isSignedIn);
+
 
 app.get('/', (req, res) => {
     res.send('ASTOUNDING NEWS BY EXPRESS, VIA NORFOLK!—The Atlantic Crossed in Three Days!—Signal Triumph of Mr. Monck Mason\'s Flying Machine!—Arrival at Sullivan\'s Island, near Charlestown, S. C., of Mr. Mason, Mr. Robert Holland, Mr. Henson, Mr. Harrison Ainsworth, and four others, in the Steering Balloon, Victoria, after a Passage of Seventy-five Hours from Land to Land! Full Particulars of the Voyage!');

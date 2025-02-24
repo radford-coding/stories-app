@@ -14,10 +14,10 @@ const storySchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    vibes: {
-        type: Array,
+    vibes: [{
+        type: String,
         default: [],
-    },
+    }],
 });
 
 const Story = mongoose.model('Story', storySchema);
