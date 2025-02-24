@@ -29,4 +29,9 @@ router.get('/:storyID', async (req, res) => {
     res.render('stories/show.ejs', { story, editPrivilege });
 });
 
+router.delete('/:storyID', async (req, res) => {
+    await Story.findByIdAndDelete(req.params.storyID);
+    res.redirect('/stories');
+});
+
 module.exports = router;
