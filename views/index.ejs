@@ -1,0 +1,19 @@
+<%- include('./partials/_htmlhead') %>
+  <title>home</title>
+</head>
+<body class="index-body">
+  <%- include('./partials/_navbar') %>
+
+  <div class="index-container">
+    <% if (user) { %>
+      <h1>welcome to the app, <%= user.username %>!</h1>
+    <% } else { %>
+      <h1>welcome to the app, guest.</h1>
+      <p>
+        <a href="/auth/register">register</a> or
+        <a href="/auth/login">log in</a>.
+      </p>
+    <% } %>
+  </div>
+</body>
+</html>

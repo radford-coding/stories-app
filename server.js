@@ -15,7 +15,7 @@ const authController = require('./controllers/auth.js');
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+    console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
 app.use(express.urlencoded({ extended: false }));
@@ -23,11 +23,11 @@ app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  })
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
 );
 app.use(passUserToView);
 app.use('/auth', authController);
@@ -35,10 +35,9 @@ app.use(isSignedIn);
 
 
 app.get('/', (req, res) => {
-    res.send('ASTOUNDING NEWS BY EXPRESS, VIA NORFOLK!—The Atlantic Crossed in Three Days!—Signal Triumph of Mr. Monck Mason\'s Flying Machine!—Arrival at Sullivan\'s Island, near Charlestown, S. C., of Mr. Mason, Mr. Robert Holland, Mr. Henson, Mr. Harrison Ainsworth, and four others, in the Steering Balloon, Victoria, after a Passage of Seventy-five Hours from Land to Land! Full Particulars of the Voyage!');
+    res.render('index.ejs', { user: req.session.user, });
 });
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}!`);
-  });
-  
+});

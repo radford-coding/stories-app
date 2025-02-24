@@ -1,0 +1,21 @@
+<%- include('../partials/_htmlhead') %>
+<title>register</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>create a new account!</h1>
+    <form action="/auth/register" method="POST">
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password" required>
+        <br><br>
+        <label for="confirmPassword">confirm password:</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <button type="submit">register</button>
+    </form>
+</body>
+
+</html>

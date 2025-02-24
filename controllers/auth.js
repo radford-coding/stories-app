@@ -17,4 +17,47 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+router.post('/register', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ username: req.body.username });
+        if (userInDatabase) {
+            return res.send('Username already taken.'); //! in form?
+        };
+        if (req.body.password !== req.body.confirmPassword) {
+            return res.send('Password and Confirm Password must match'); //! in form?
+        };
+        const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+        req.body.password = hashedPassword;
+        await User.create(req.body);
+        res.redirect('/auth/login');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    }
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ username: req.body.username });
+        if (!userInDatabase) {
+            return res.send('Login failed. Please try again.');
+        };
+        const validPassword = bcrypt.compareSync(
+            req.body.password,
+            userInDatabase.password
+        );
+        if (!validPassword) {
+            return res.send('Login failed. Please try again.');
+        };
+        req.session.user = {
+            username: userInDatabase.username,
+            _id: userInDatabase._id
+        };
+        res.redirect('/');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    }
+});
+
 module.exports = router;

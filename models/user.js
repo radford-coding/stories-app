@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
     },
     yearBorn: {
         type: String,
-        required: true,
     },
     yearDied: {
         type: String,
