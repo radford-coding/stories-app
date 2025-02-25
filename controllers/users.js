@@ -12,10 +12,9 @@ router.get('/', async (req, res) => {
 router.get('/:userID', async (req, res) => {
     const user = await User.findById(req.params.userID).populate('stories');
     const stories = await Story.find({ author: req.params.userID });
-    const currentUser = await User.findById(req.session.user._id);
-    const adminPrivilege = currentUser.userType == 'admin';
-    const me = currentUser._id == user._id;
-    console.log(`me: ${me}`); //!whyyyyyyy
+    const sessionUser = await User.findById(req.session.user._id);
+    const adminPrivilege = sessionUser.userType == 'admin';
+    const me = sessionUser._id.equals(user._id);
     res.render('users/show.ejs', { user, stories, adminPrivilege, me });
 });
 

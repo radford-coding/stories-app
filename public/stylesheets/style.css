@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: antiquewhite;
 }
@@ -8,4 +12,9 @@ nav * {
 
 input:invalid {
     border: 1px solid red;
+}
+
+p {
+    max-width: 900px;
+    text-align: justify;
 }
