@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema({
     alias: {
         type: String,
     },
-    yearBorn: {
-        type: String,
-    },
-    yearDied: {
-        type: String,
-    },
+    // yearBorn: {
+    //     type: String,
+    // },
+    // yearDied: {
+    //     type: String,
+    // },
 });
 
 const User = mongoose.model('User', userSchema);

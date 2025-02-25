@@ -5,3 +5,7 @@ body {
 nav * {
     margin: 0 10px;
 }
+
+input:invalid {
+    border: 1px solid red;
+}

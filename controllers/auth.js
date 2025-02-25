@@ -28,11 +28,12 @@ router.post('/register', async (req, res) => {
         };
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
         req.body.password = hashedPassword;
+        req.body.userType = req.body.userType === 'on' ? 'author' : 'reader';
         await User.create(req.body);
         res.redirect('/auth/login');
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/');;
     }
 });
 
@@ -57,7 +58,7 @@ router.post('/login', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.redirect('/');
-    }
+    };
 });
 
 module.exports = router;

@@ -6,10 +6,18 @@
     <%- include('../partials/_navbar') %>
     <h1><%= user.username %></h1>
     <ul>
-        <% user.stories.forEach(story => { %>
+        <% stories.forEach(story => { %>
+        <% console.log(`story: ${story}`) %>
         <li><a href="/stories/<%= story._id %>"><%= story.name %></a></li>
         <% }); %>
     </ul>
+    <% if(adminPrivilege) { %>
+    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= user.username %></button>
+    </form>
+    <% }; %>
+    <br><br>
+    <p><%= adminPrivilege %></p>
 </body>
 
 </html>

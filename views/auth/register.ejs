@@ -6,14 +6,18 @@
     <%- include('../partials/_navbar') %>
     <h1>create a new account!</h1>
     <form action="/auth/register" method="POST">
-        <label for="username">username:</label>
-        <input type="text" name="username" id="username" required>
+        <label for="username">username (required)</label>
+        <input type="text" name="username" id="username" required pattern="^\w{6,14}$">
         <br><br>
-        <label for="password">password:</label>
+        <label for="password">password (required)</label>
         <input type="password" name="password" id="password" required>
         <br><br>
         <label for="confirmPassword">confirm password:</label>
         <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <br><br>
+        <label for="userType">are you an author?</label>
+        <input type="checkbox" name="userType" id="userType">
+        <br><br>
         <button type="submit">register</button>
     </form>
 </body>
