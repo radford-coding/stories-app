@@ -52,7 +52,8 @@ router.post('/login', async (req, res) => {
         };
         req.session.user = {
             username: userInDatabase.username,
-            _id: userInDatabase._id
+            _id: userInDatabase._id,
+            userType: userInDatabase.userType,
         };
         res.redirect('/');
     } catch (error) {

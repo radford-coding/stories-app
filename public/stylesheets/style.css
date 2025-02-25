@@ -1,20 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
     background-color: antiquewhite;
+    padding: 0.5vmin;
 }
 
 nav * {
-    margin: 0 10px;
-}
-
-input:invalid {
-    border: 1px solid red;
+    margin: 10px;
 }
 
 p {
     max-width: 900px;
     text-align: justify;
 }
+
+.reveal-if-active {
+    display: none;
+}
+
+input[type="checkbox"]:checked~.reveal-if-active {
+    display: inline;
+}
+
+input:invalid {
+    border: 1px solid lightcoral;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 50%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 1vmin;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+    /* display: grid;
+    grid-gap: 5vmin;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1rem 1rem 1rem 1rem; */
+
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.5vmin;
+    /* margin: 0.5vmin 0; */
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    display: inline;
+    width: auto;
+}
+
+input:focus,
+textarea:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+label {
+    /* margin: 1vmin 0;
+    padding: 0.5vmin; */
+    display: inline-block;
+}
+
+button[type="submit"] {
+    margin-top: 1vmin;
+    display: block;
+}
+
+textarea {
+    overflow: auto;
+}
+
+/* input::after,
+textarea::after {
+    height: 10px;
+    width: 10px;
+    background-color: blue;
+} */

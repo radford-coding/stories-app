@@ -8,16 +8,19 @@
     <form action="/auth/register" method="POST">
         <label for="username">username (required)</label>
         <input type="text" name="username" id="username" required pattern="^\w{6,14}$">
-        <br><br>
         <label for="password">password (required)</label>
         <input type="password" name="password" id="password" required>
-        <br><br>
         <label for="confirmPassword">confirm password:</label>
         <input type="password" name="confirmPassword" id="confirmPassword" required>
-        <br><br>
         <label for="userType">are you an author?</label>
         <input type="checkbox" name="userType" id="userType">
-        <br><br>
+        <br>
+        <label for="alias" class="reveal-if-active">publishing alias:</label>
+        <input type="text" name="alias" id="alias" class="reveal-if-active">
+        <label for="bio" class="reveal-if-active">bio:</label>
+        <textarea name="bio" id="bio" class="reveal-if-active"></textarea>
+        <label for="birth" class="reveal-if-active">birth year:</label>
+        <input type="number" name="birth" id="birth" min="0" max="2025" class="reveal-if-active">
         <button type="submit">register</button>
     </form>
 </body>

@@ -1,0 +1,22 @@
+<%- include('../partials/_htmlhead') %>
+<title><%= user.username %></title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>edit <%= user.username %></h1>
+    <% if(user.userType === 'admin') { %>
+    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= user.username %></button>
+    </form>
+    <% }; %>
+    <br><br>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+        <label for="userType">are you an author?</label>
+        <input type="checkbox" name="userType" id="userType">
+        <br><br>
+        <button type="submit">update profile</button>
+    </form>
+</body>
+
+</html>

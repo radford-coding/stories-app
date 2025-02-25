@@ -1,22 +1,17 @@
 <%- include('../partials/_htmlhead') %>
-<title><%= user.username %></title>
+<title><%= userFound.username %></title>
 </head>
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1><%= user.username %></h1>
+    <h1><%= userFound.username %></h1>
     <ul>
         <% stories.forEach(story => { %>
         <li><a href="/stories/<%= story._id %>"><%= story.name %></a></li>
         <% }); %>
     </ul>
-    <% if(adminPrivilege) { %>
-    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete <%= user.username %></button>
-    </form>
-    <% }; %>
     <% if (me) { %>
-        <a href="users/<%= user._id %>/edit">edit my profile</a>
+        <a href="/users/<%= userFound._id %>/edit">edit my profile</a>
     <% }; %>
     <br><br>
 </body>
