@@ -10,12 +10,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:userID', async (req, res) => {
-    const userFound = await User.findById(req.params.userID).populate('stories');
-    const stories = await Story.find({ author: req.params.userID });
+    const userFound = await User.findById(req.params.userID);
+    const stories = await Story.find({ owner: req.params.userID }).populate('owner');
     const sessionUser = await User.findById(req.session.user._id);
-    const adminPrivilege = sessionUser.userType == 'admin';
     const me = sessionUser._id.equals(userFound._id);
-    res.render('users/show.ejs', { userFound, stories, adminPrivilege, me });
+    res.render('users/show.ejs', { userFound, stories, me });
 });
 
 router.delete('/:userID', async (req, res) => {
@@ -24,7 +23,6 @@ router.delete('/:userID', async (req, res) => {
 });
 
 router.put('/:userID', async (req, res) => {
-    // console.log(`request body: ${req.body}`);
     const updatedUser = await User.findByIdAndUpdate(req.params.userID, req.body, { new: true });
     res.redirect(`/users/${req.params.userID}`);
     console.log(`updated user: ${updatedUser}`);

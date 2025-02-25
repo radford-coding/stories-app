@@ -54,6 +54,7 @@ router.post('/login', async (req, res) => {
             username: userInDatabase.username,
             _id: userInDatabase._id,
             userType: userInDatabase.userType,
+            alias: userInDatabase.alias,
         };
         res.redirect('/');
     } catch (error) {

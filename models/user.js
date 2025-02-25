@@ -14,19 +14,12 @@ const userSchema = new mongoose.Schema({
         enum: ['admin', 'author', 'reader'],
         default: 'reader',
     },
-    stories: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Story',
-    }],
     alias: {
         type: String,
     },
-    // yearBorn: {
-    //     type: String,
-    // },
-    // yearDied: {
-    //     type: String,
-    // },
+    bio: {
+        type: String,
+    },
 });
 
 const User = mongoose.model('User', userSchema);

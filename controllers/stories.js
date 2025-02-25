@@ -4,7 +4,7 @@ const router = express.Router();
 const Story = require('../models/story.js');
 
 router.get('/', async (req, res) => {
-    const stories = await Story.find({}).populate('author');
+    const stories = await Story.find({}).populate('owner');
     res.render('stories/index.ejs', { stories });
 });
 
@@ -14,7 +14,8 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        req.body.author = req.session.user._id;
+        req.body.owner = req.session.user._id;
+        req.body.author = req.session.user.alias ? req.session.user.alias : req.session.user.username;
         await Story.create(req.body);
         res.redirect('/stories');
     } catch (error) {
@@ -24,8 +25,8 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:storyID', async (req, res) => {
-    const story = await Story.findById(req.params.storyID).populate('author');
-    const editPrivilege = req.session.user._id == story.author._id;
+    const story = await Story.findById(req.params.storyID).populate('owner');
+    const editPrivilege = req.session.user._id == story.owner._id;
     res.render('stories/show.ejs', { story, editPrivilege });
 });
 

@@ -5,11 +5,18 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1><%= userFound.username %></h1>
-    <ul>
+    <div class="cards">
         <% stories.forEach(story => { %>
-        <li><a href="/stories/<%= story._id %>"><%= story.name %></a></li>
+        <a href="/stories/<%= story._id %>" class="card-wrapper">
+            <div class="card">
+                <h3><%= story.name %></h3>
+                <p>by</p>
+                <h3><%= story.owner.alias ? story.owner.alias : story.owner.username %></h3>
+            </div>
+        </a>
         <% }); %>
-    </ul>
+    </div>
+    <br><br>
     <% if (me) { %>
         <a href="/users/<%= userFound._id %>/edit">edit my profile</a>
     <% }; %>

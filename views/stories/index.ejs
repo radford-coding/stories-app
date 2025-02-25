@@ -12,7 +12,7 @@
             <div class="card">
                 <h3><%= story.name %></h3>
                 <p>by</p>
-                <h3><%= story.author.alias ? story.author.alias : story.author.username %></h3>
+                <h3><%= story.owner.alias ? story.owner.alias : story.owner.username %></h3>
             </div>
         </a>
         <% }); %>
