@@ -7,7 +7,6 @@
     <h1><%= user.username %></h1>
     <ul>
         <% stories.forEach(story => { %>
-        <% console.log(`story: ${story}`) %>
         <li><a href="/stories/<%= story._id %>"><%= story.name %></a></li>
         <% }); %>
     </ul>
@@ -16,8 +15,10 @@
         <button type="submit">Delete <%= user.username %></button>
     </form>
     <% }; %>
+    <% if (me) { %>
+        <a href="users/<%= user._id %>/edit">edit my profile</a>
+    <% }; %>
     <br><br>
-    <p><%= adminPrivilege %></p>
 </body>
 
 </html>

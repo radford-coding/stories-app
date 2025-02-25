@@ -4,6 +4,7 @@
         <a href="/stories">stories</a>
         <a href="/stories/new">new story</a>
         <a href="/users">community</a>
+        <a href="/users/<%= locals.user._id %>">my profile</a>
         <a href="/auth/logout">log out</a>
     <% } else { %>
         <a href="/auth/login">log in</a>
