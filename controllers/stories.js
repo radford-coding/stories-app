@@ -4,7 +4,7 @@ const router = express.Router();
 const Story = require('../models/story.js');
 
 router.get('/', async (req, res) => {
-    const stories = await Story.find({});
+    const stories = await Story.find({}).populate('author');
     res.render('stories/index.ejs', { stories });
 });
 

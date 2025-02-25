@@ -5,11 +5,18 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1>stories index</h1>
-    <ul>
+    
+    <div class="cards">
         <% stories.forEach(story => { %>
-            <li><a href="/stories/<%= story._id %>"><%= story.name %></a></li>
+        <a href="/stories/<%= story._id %>" class="card-wrapper">
+            <div class="card">
+                <h3><%= story.name %></h3>
+                <p>by</p>
+                <h3><%= story.author.alias ? story.author.alias : story.author.username %></h3>
+            </div>
+        </a>
         <% }); %>
-    </ul>
+    </div>
 </body>
 
 </html>
