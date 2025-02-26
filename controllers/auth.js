@@ -4,6 +4,11 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user.js');
 
+// const shortStoryData = require('../queries/short-stories.json');
+// const prettyData = [shortStoryData.Fantasy, shortStoryData.Mystery, shortStoryData.Horror, shortStoryData.Philosophy].flat();
+
+const Story = require('../models/story.js');
+
 router.get('/register', (req, res) => {
     res.render('auth/register.ejs');
 });
@@ -29,7 +34,16 @@ router.post('/register', async (req, res) => {
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
         req.body.password = hashedPassword;
         req.body.userType = req.body.userType === 'on' ? 'author' : 'reader';
-        await User.create(req.body);
+        const newUser = await User.create(req.body);
+        // await prettyData.filter(story => story.Author === newUser.alias).forEach(story => {
+        //     Story.create({
+        //         name: story.Name,
+        //         body: story.content,
+        //         owner: newUser._id,
+        //         author: story.Author,
+        //         vibes: story.Genre,
+        //     });
+        // });
         res.redirect('/auth/login');
     } catch (error) {
         console.log(error);

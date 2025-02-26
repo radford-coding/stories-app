@@ -56,9 +56,7 @@ const findDuplicates = (array) => {
     return array.filter((element, index) => array.indexOf(element) !== index);
 };
 
-console.log(stories1.length);
-console.log(findDuplicates(stories1));
-console.log(stories1[0]);
+console.log(findDuplicates(stories1.map(s => s.Author)));
 
 
 

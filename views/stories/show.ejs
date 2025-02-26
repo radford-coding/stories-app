@@ -5,7 +5,7 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1><%= story.name %></h1>
-    <h2>by <%= story.owner.alias %></h2>
+    <h2>by <a href="/users/<%= story.owner._id %>"><%= story.owner.alias %></a></h2>
     <br>
     <% if (editPrivilege) { %>
     <form action="/stories/<%= story._id %>?_method=DELETE" method="POST">

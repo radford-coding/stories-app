@@ -6,10 +6,14 @@
     <%- include('../partials/_navbar') %>
     <h1><%= userFound.alias ? userFound.alias : userFound.username %></h1>
     <% if(user.userType === 'admin') { %>
-        <form action="/users/<%= userFound._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete <%= userFound.username %></button>
-        </form>
-        <% }; %>
+    <form action="/users/<%= userFound._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= userFound.username %></button>
+    </form>
+    <% } else if (userFound.userType === 'author') { %>
+        <div class="bio">
+            <p><%= userFound.bio %></p>
+        </div>
+    <% }; %>
     <div class="cards">
         <% stories.forEach(story => { %>
         <a href="/stories/<%= story._id %>" class="card-wrapper">
@@ -23,7 +27,7 @@
     </div>
     <br><br>
     <% if (me) { %>
-        <a href="/users/<%= userFound._id %>/edit">edit my profile</a>
+    <a href="/users/<%= userFound._id %>/edit">edit my profile</a>
     <% }; %>
     <br><br>
 </body>
