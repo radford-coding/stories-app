@@ -13,27 +13,33 @@ const getShortestStories = async () => {
     };
 };
 
-// temp = await getShortestStories();
+temp = await getShortestStories();
+
+temp = Object.values(temp);
+
+console.log(temp[0]);
+console.log(temp[1]);
+console.log(temp[2]);
 
 // temp.forEach(element => {
 //     console.log(element.author);
 // });
 
-const writeShortestStories = async () => {
-    try {
-        await fetch('http://localhost:3000/', {
-            method: 'POST',
-            body: JSON.stringify({
-                name: 'test title',
-                body: 'test body',
-                owner: '67be74bc1ab0ecf6383584a0',
-                author: 'Aesop\'s Fables',
-                vibes: ['adage', 'fable'],
-            }),
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
+// const writeShortestStories = async () => {
+//     try {
+//         await fetch('http://localhost:3000/', {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 name: 'test title',
+//                 body: 'test body',
+//                 owner: '67be74bc1ab0ecf6383584a0',
+//                 author: 'Aesop\'s Fables',
+//                 vibes: ['adage', 'fable'],
+//             }),
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     };
+// };
 
-writeShortestStories();
+// writeShortestStories();

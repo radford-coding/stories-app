@@ -7,7 +7,7 @@
     <h1>all users</h1>
     <ul>
         <% users.forEach(user => { %>
-            <li><a href="/users/<%= user._id %>"><%= user.username %></a></li>
+            <li><a href="/users/<%= user._id %>"><%= user.alias ? user.alias : user.username %></a></li>
         <% }); %>
     </ul>
 </body>
