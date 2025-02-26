@@ -5,7 +5,7 @@ const User = require('../models/user.js');
 const Story = require('../models/story.js');
 
 router.get('/', async (req, res) => {
-    const users = await User.find({}).sort('username');
+    const users = await User.find({ _id: {$ne: '67bcf246d327d1debcbf004c'} }).sort('alias');
     res.render('users/index.ejs', { users });
 });
 
@@ -14,6 +14,7 @@ router.get('/:userID', async (req, res) => {
     const stories = await Story.find({ owner: req.params.userID }).populate('owner');
     const sessionUser = await User.findById(req.session.user._id);
     const me = sessionUser._id.equals(userFound._id);
+    console.log(stories);
     res.render('users/show.ejs', { userFound, stories, me });
 });
 

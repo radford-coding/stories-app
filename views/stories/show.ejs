@@ -18,7 +18,7 @@
     <br><br>
     <% }; %>
 
-    <%- story.body.split('\r\n\r\n').map(t => `<p>${t}</p>`).join(''); %>
+    <%- story.body.split('\n').map(t => `<p>${t}</p>`).join(''); %>
 
     <br><br>
 
