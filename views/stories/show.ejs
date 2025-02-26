@@ -17,8 +17,9 @@
     <a href="/stories/<%= story._id %>/edit"><input type="button" value="Edit <%= story.name %>"></a>
     <br><br>
     <% }; %>
-
-    <%- story.body.split('\n').map(t => `<p>${t}</p>`).join(''); %>
+    <div class="story-container">
+        <%- story.body.split('\n').map(t => `<p>${t}</p>`).join(''); %>
+    </div>
 
     <br><br>
 

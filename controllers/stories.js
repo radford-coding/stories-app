@@ -16,23 +16,6 @@ router.post('/', async (req, res) => {
     try {
         req.body.owner = req.session.user._id;
         req.body.author = req.session.user.alias ? req.session.user.alias : req.session.user.username;
-        // await Story.create(req.body);
-        // trying lotsa stories
-        // const response = await fetch('https://shortstories-api.onrender.com/stories');
-        // if (!response.ok) {
-        //     throw new Error(`response status: ${response.status}`)
-        // };
-        // let storiesObj = await response.json();
-        // storiesObj = Object.values(storiesObj);
-        // await storiesObj.forEach(story => {
-        //     Story.create({
-        //         name: story.title,
-        //         body: story.story,
-        //         owner: '67be74bc1ab0ecf6383584a0',
-        //         author: story.author,
-        //         vibes: story.moral,
-        //     });
-        // });
         res.redirect('/stories');
     } catch (error) {
         console.log(error);

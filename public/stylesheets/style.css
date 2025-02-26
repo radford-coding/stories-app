@@ -24,7 +24,9 @@ nav * {
 p {
     max-width: 900px;
     text-align: justify;
+    margin: 1rem auto;
 }
+
 
 .reveal-if-active {
     display: none;
