@@ -4,7 +4,7 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1><%= userFound.username %></h1>
+    <h1><%= userFound.alias ? userFound.alias : userFound.username %></h1>
     <% if(user.userType === 'admin') { %>
         <form action="/users/<%= userFound._id %>?_method=DELETE" method="POST">
             <button type="submit">Delete <%= userFound.username %></button>
