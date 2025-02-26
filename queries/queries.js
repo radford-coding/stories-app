@@ -21,7 +21,7 @@ const getShortestStories = async () => {
 
 const writeShortestStories = async () => {
     try {
-        const response = await fetch('localhost:3000/', {
+        await fetch('http://localhost:3000/', {
             method: 'POST',
             body: JSON.stringify({
                 name: 'test title',
