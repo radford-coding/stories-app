@@ -24,7 +24,7 @@ nav * {
 p {
     max-width: 900px;
     text-align: justify;
-    margin: 1rem auto;
+    margin: 0 auto;
 }
 
 
@@ -126,4 +126,8 @@ textarea {
 .card>p,
 .card>h3 {
     text-align: center;
+}
+
+.story-container > p {
+    margin: 1rem 0;
 }
