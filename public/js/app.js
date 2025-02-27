@@ -7,3 +7,14 @@ const pwdVerify = () => {
         confirm.setCustomValidity('Passwords do not match.');
     };
 };
+
+const authorBtn = document.getElementById('userType');
+const toggleableEls = document.querySelectorAll('.reveal-if-active');
+
+if (authorBtn) {
+    authorBtn.addEventListener('change', () => {
+        toggleableEls.forEach(e => {
+            e.classList.toggle('reveal-if-active');
+        });
+    });
+};
