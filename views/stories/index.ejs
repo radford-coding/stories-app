@@ -4,7 +4,8 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <div class="cards bg-dark py-2 mt-0">
+    <h1 class="text-center m-4">stories (alphabetical)</h1>
+    <div class="cards py-2 mt-0">
         <% stories.forEach(story => { %>
         <a href="/stories/<%= story._id %>" class="card-wrapper m-1">
             <div class="card bg-light">

@@ -4,7 +4,7 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1><%= userFound.alias ? userFound.alias : userFound.username %></h1>
+    <h1 class="text-center m-4"><%= userFound.alias ? userFound.alias : userFound.username %></h1>
     <% if(user.userType === 'admin') { %>
     <form action="/users/<%= userFound._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= userFound.username %></button>
@@ -14,13 +14,16 @@
             <p><%= userFound.bio %></p>
         </div>
     <% }; %>
-    <div class="cards">
+    <div class="cards py-2 mt-0">
         <% stories.forEach(story => { %>
-        <a href="/stories/<%= story._id %>" class="card-wrapper">
-            <div class="card">
-                <h3><%= story.name %></h3>
-                <p>by</p>
-                <h3><%= story.owner.alias ? story.owner.alias : story.owner.username %></h3>
+        <a href="/stories/<%= story._id %>" class="card-wrapper m-1">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h3 class="card-title"><%= story.name %></h3>
+                    <p class="card-text">by</p>
+                    <h3 class="card-subtitle text-muted">
+                        <%= story.owner.alias ? story.owner.alias : story.owner.username %></h3>
+                </div>
             </div>
         </a>
         <% }); %>

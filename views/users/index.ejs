@@ -4,10 +4,10 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1>all users</h1>
-    <ul>
+    <h1 class="m-4 text-center">authors (alphabetical)</h1>
+    <ul class="list-group mx-4 px-4 mt-4">
         <% users.forEach(user => { %>
-            <li><a href="/users/<%= user._id %>"><%= user.alias ? user.alias : user.username %></a></li>
+            <li class="list-group-item"><a href="/users/<%= user._id %>"><%= user.alias ? user.alias : user.username %></a></li>
         <% }); %>
     </ul>
 </body>
