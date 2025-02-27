@@ -4,7 +4,7 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1 class="m-5 text-center">edit <%= user.username %></h1>
+    <h1 class="m-4 text-center">edit <%= user.username %></h1>
     
     <form action="/users/<%= user._id %>?_method=PUT" method="POST" class="mx-5 p-5 card">
         <div class="form-group row mb-2">

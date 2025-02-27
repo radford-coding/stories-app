@@ -64,19 +64,37 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    console.log(req.query);
-    const stories = await Story.find({
-        name: req.query.titleSearch,
-        // author: req.query.authorSearch,
-    }).populate('owner').sort('name');
-    res.render('stories/search.ejs', { stories });
+    let storyQuery = {};
+    let authorQuery = {};
+    let stories = [];
+    let authors = [];
+    if (req.query.titleSearch) {
+        storyQuery = {
+            name: {
+                $regex: req.query.titleSearch,
+                $options: 'i',
+            }
+        };
+        authorQuery = {
+            alias: {
+                $regex: req.query.titleSearch,
+                $options: 'i',
+            }
+        };
+    };
+    if (req.query.titleSearch) {
+        stories = await Story.find(storyQuery).populate('owner').sort('name');
+        authors = await User.find(authorQuery);
+    };
+    res.render('stories/search.ejs', { stories, authors });
 });
 
 router.post('/search', (req, res) => {
-    console.log(`title: ${req.body.titleSearch}`);
-    console.log(`author: ${req.body.authorSearch}`);
+    // console.log(`title: ${req.body.titleSearch}`);
+    // console.log(`author: ${req.body.authorSearch}`);
     const queryString = req.body.titleSearch ? 'titleSearch=' + req.body.titleSearch : '';
     // ${req.body.authorSearch ? '&authorSearch=' + req.body.authorSearch : ''}
+
     res.redirect(`/stories/search?${queryString}`);
 });
 
@@ -84,7 +102,7 @@ router.post('/', async (req, res) => {
     try {
         req.body.owner = req.session.user._id;
         req.body.author = req.session.user.alias ? req.session.user.alias : req.session.user.username;
-        //!
+        await Story.create(req.body);
         res.redirect('/stories');
     } catch (error) {
         console.log(error);

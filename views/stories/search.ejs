@@ -4,28 +4,17 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1 class="text-center m-4">search</h1>
-
-    <div class="m-5">
-        <form action="/stories/search" method="POST" class="row mb-3">
-            <label for="title-search" class="col text-end col-form-label">by title:</label>
-            <div class="col">
-                <input type="search" id="title-search" name="titleSearch" class="h-100 w-100">
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary flex-grow-0">search</button>
-            </div>
-        </form>
-        <form action="/stories/search" method="POST" class="row mb-3">
-            <label for="author-search" class="col text-end col-form-label">by author:</label>
-            <div class="col">
-                <input type="search" id="author-search" name="authorSearch" class="h-100 w-100">
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary flex-grow-0">search</button>
-            </div>
-        </form>
-    </div>
+    <% if (authors.length > 0) { %>
+    <h1 class="text-center m-4">authors</h1>
+    <ul class="list-group m-4 px-4">
+        <% authors.forEach(author => { %>
+        <li class="list-group-item"><a
+                href="/users/<%= author._id %>"><%= author.alias ? author.alias : author.username %></a></li>
+        <% }); %>
+    </ul>
+    <% }; %>
+    <% if (stories.length > 0) { %>
+    <h1 class="text-center m-4">stories</h1>
     <div class="cards py-2 mt-0">
         <% stories.forEach(story => { %>
         <a href="/stories/<%= story._id %>" class="card-wrapper m-1">
@@ -40,6 +29,10 @@
         </a>
         <% }); %>
     </div>
+    <% }; %>
+    <% if (stories.length === 0 && authors.length === 0) { %>
+        <h5 class="m-4 text-center">[no results]</h3>
+    <% }; %>
 </body>
 
 </html>

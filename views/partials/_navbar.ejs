@@ -5,7 +5,17 @@
         <a href="/stories/new" class="nav-link mx-4">new story</a>
         <a href="/users" class="nav-link mx-4">authors</a>
         <a href="/users/<%= locals.user._id %>" class="nav-link mx-4">my profile</a>
-        <a href="/stories/search" class="nav-link mx-4">search</a>
+        <!-- <a href="/stories/search" class="nav-link mx-4">search</a> -->
+        <div class="nav-link mx-4">
+            <form action="/stories/search" method="POST" class="row">
+                <div class="col p-0">
+                    <input type="search" id="title-search" name="titleSearch" class="h-100 w-100">
+                </div>
+                <div class="col px-1">
+                    <button type="submit" class="btn btn-primary flex-grow-0">search</button>
+                </div>
+            </form>
+        </div>
         <a href="/auth/logout" class="nav-link mx-4">log out</a>
     <% } else { %>
         <a href="/auth/login" class="nav-link mx-4">log in</a>
