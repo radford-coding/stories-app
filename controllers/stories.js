@@ -65,14 +65,19 @@ router.get('/new', (req, res) => {
 
 router.get('/search', async (req, res) => {
     console.log(req.query);
-    const stories = await Story.find({ name: req.query.titleSearch }).populate('owner').sort('name');
+    const stories = await Story.find({
+        name: req.query.titleSearch,
+        // author: req.query.authorSearch,
+    }).populate('owner').sort('name');
     res.render('stories/search.ejs', { stories });
 });
 
 router.post('/search', (req, res) => {
-    // console.log(req.body);
-    // res.render('stories/search.ejs', { titleSearch: req.body.titleSearch });/
-    res.redirect(`/stories/search?${'titleSearch='+req.body.titleSearch}`);
+    console.log(`title: ${req.body.titleSearch}`);
+    console.log(`author: ${req.body.authorSearch}`);
+    const queryString = req.body.titleSearch ? 'titleSearch=' + req.body.titleSearch : '';
+    // ${req.body.authorSearch ? '&authorSearch=' + req.body.authorSearch : ''}
+    res.redirect(`/stories/search?${queryString}`);
 });
 
 router.post('/', async (req, res) => {
