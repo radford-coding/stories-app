@@ -1,0 +1,30 @@
+<%- include('../partials/_htmlhead') %>
+<title>search</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1 class="text-center m-4">search</h1>
+    
+    <form action="/stories/search" method="POST">
+        <label for="title-search">by title: </label>
+        <input type="search" id="title-search" name="titleSearch">
+        <button type="submit" class="btn btn-primary">search</button>
+    </form>
+    <div class="cards py-2 mt-0">
+        <% stories.forEach(story => { %>
+        <a href="/stories/<%= story._id %>" class="card-wrapper m-1">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h3 class="card-title"><%= story.name %></h3>
+                    <p class="card-text">by</p>
+                    <h3 class="card-subtitle text-muted">
+                        <%= story.owner.alias ? story.owner.alias : story.owner.username %></h3>
+                </div>
+            </div>
+        </a>
+        <% }); %>
+    </div>
+</body>
+
+</html>

@@ -63,10 +63,23 @@ router.get('/new', (req, res) => {
     res.render('stories/new.ejs');
 });
 
+router.get('/search', async (req, res) => {
+    console.log(req.query);
+    const stories = await Story.find({ name: req.query.titleSearch }).populate('owner').sort('name');
+    res.render('stories/search.ejs', { stories });
+});
+
+router.post('/search', (req, res) => {
+    // console.log(req.body);
+    // res.render('stories/search.ejs', { titleSearch: req.body.titleSearch });/
+    res.redirect(`/stories/search?${'titleSearch='+req.body.titleSearch}`);
+});
+
 router.post('/', async (req, res) => {
     try {
         req.body.owner = req.session.user._id;
         req.body.author = req.session.user.alias ? req.session.user.alias : req.session.user.username;
+        //!
         res.redirect('/stories');
     } catch (error) {
         console.log(error);

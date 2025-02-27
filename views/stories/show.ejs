@@ -8,14 +8,15 @@
     <h2 class="text-center">by <a href="/users/<%= story.owner._id %>"><%= story.owner.alias %></a></h2>
     <br>
     <% if (editPrivilege) { %>
-    <form action="/stories/<%= story._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete <%= story.name %></button>
+    <form action="/stories/<%= story._id %>?_method=DELETE" method="POST" class="text-center">
+        <button type="submit" class="btn btn-primary">Delete "<%= story.name %>"</button>
     </form>
-    <br><br>
+    <br>
     <% }; %>
     <% if (editPrivilege) { %>
-    <a href="/stories/<%= story._id %>/edit"><input type="button" value="Edit <%= story.name %>"></a>
-    <br><br>
+    <div class="text-center">
+        <a href="/stories/<%= story._id %>/edit" class="btn btn-primary">Edit "<%= story.name %>"</a>
+    </div>
     <% }; %>
     <div class="m-4 p-4">
         <%- story.body.split('\n').map(t => `<p>${t}</p>`).join(''); %>

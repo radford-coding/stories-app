@@ -4,20 +4,28 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1 class="m-4 text-center">edit <%= user.username %></h1>
+    <h1 class="m-5 text-center">edit <%= user.username %></h1>
     
-    <br><br>
-    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-        <label for="userType">are you an author?</label>
-        <input type="checkbox" name="userType" id="userType">
-        <br>
-        <label for="alias" class="reveal-if-active">publishing alias:</label>
-        <input type="text" name="alias" id="alias" class="reveal-if-active">
-        <label for="bio" class="reveal-if-active">bio:</label>
-        <textarea name="bio" id="bio" class="reveal-if-active"></textarea>
-        <label for="birth" class="reveal-if-active">birth year:</label>
-        <input type="number" name="birth" id="birth" min="0" max="2025" class="reveal-if-active">
-        <button type="submit">update profile</button>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST" class="mx-5 p-5 card">
+        <div class="form-group row mb-2">
+            <label for="userType" class="col-sm-2 offset-sm-2 col-form-label">are you an author?</label>
+            <div class="col-sm-8 form-check form-switch">
+                <input type="checkbox" name="userType" id="userType" class="form-check-input" <%= user.userType === 'author' ? 'checked' : '' %>>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="alias" class="col-sm-2 offset-sm-2 col-form-label">publishing alias:</label>
+            <div class="col-sm-8">
+                <input type="text" name="alias" id="alias" value="<%= user.alias %>">
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="bio" class="col-sm-2 offset-sm-2 col-form-label">bio:</label>
+            <div class="col-sm-8">
+                <textarea name="bio" id="bio"><% console.log(`user: ${user}`) %></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary col-sm-2 offset-sm-2">update</button>
     </form>
 </body>
 

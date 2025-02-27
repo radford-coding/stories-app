@@ -14,7 +14,7 @@ router.get('/:userID', async (req, res) => {
     const stories = await Story.find({ owner: req.params.userID }).populate('owner');
     const sessionUser = await User.findById(req.session.user._id);
     const me = sessionUser._id.equals(userFound._id);
-    console.log(stories);
+    console.log(userFound);
     res.render('users/show.ejs', { userFound, stories, me });
 });
 
@@ -24,6 +24,8 @@ router.delete('/:userID', async (req, res) => {
 });
 
 router.put('/:userID', async (req, res) => {
+    req.body.userType = req.body.userType === 'on' ? 'author' : 'reader';
+    console.log(req.session.user);
     const updatedUser = await User.findByIdAndUpdate(req.params.userID, req.body, { new: true });
     res.redirect(`/users/${req.params.userID}`);
     console.log(`updated user: ${updatedUser}`);
