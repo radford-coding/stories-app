@@ -30,6 +30,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 app.use(passUserToView);
+app.use("/",express.static("./node_modules/bootstrap/dist/"));
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/stories', storiesController);

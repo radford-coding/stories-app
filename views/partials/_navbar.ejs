@@ -1,14 +1,13 @@
-<nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
     <% if (user) { %>
-        <a href="/">home</a>
-        <a href="/stories">stories</a>
-        <a href="/stories/new">new story</a>
-        <a href="/users">community</a>
-        <a href="/users/<%= locals.user._id %>">my profile</a>
-        <a href="/auth/logout">log out</a>
+        <a href="/" class="nav-link mx-4">home</a>
+        <a href="/stories" class="nav-link mx-4">stories</a>
+        <a href="/stories/new" class="nav-link mx-4">new story</a>
+        <a href="/users" class="nav-link mx-4">community</a>
+        <a href="/users/<%= locals.user._id %>" class="nav-link mx-4">my profile</a>
+        <a href="/auth/logout" class="nav-link mx-4">log out</a>
     <% } else { %>
-        <a href="/auth/login">log in</a>
-        <a href="/auth/register">register</a>
+        <a href="/auth/login" class="nav-link mx-4">log in</a>
+        <a href="/auth/register" class="nav-link mx-4">register</a>
     <% }; %>
 </nav>
-<br>

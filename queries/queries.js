@@ -26,41 +26,21 @@
 // });
 
 
-// const getShortStories = async () => {
-//     try {
-//         const response = await fetch('https://americanliterature.com/100-great-short-stories/');
-//         if (!response.ok) {
-//             throw new Error(`response status: ${response.status}`)
-//         };
-//         return await response.string();
-//     } catch (error) {
-//         console.log(error);
-//     };
-// };
-
-// let temp = await getShortStories();
-
-// temp = parseFromString(temp, 'text/html');
-
-// console.log(temp);
-
-
-
-const shortStoryData = require('./short-stories.json');
-
-// console.log(Object.keys(shortStoryData));
-
-const stories1 = [shortStoryData.Fantasy, shortStoryData.Mystery, shortStoryData.Horror, shortStoryData.Philosophy].flat();
-
-const findDuplicates = (array) => {
-    return array.filter((element, index) => array.indexOf(element) !== index);
+const getShortStories = async () => {
+    try {
+        const response = await fetch('https://americanliterature.com/100-great-short-stories/')
+        .then(res => res.body)
+        .then(res => new Response(res).text());
+        return response;
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-console.log(stories1.map(s => s.Author));
-
-
-
-
-// console.log(shortStoryData);
-
-// console.log(shortStoryData.Fantasy[0].Content);
+let temp = await getShortStories();
+// console.log(temp);
+// const authorRegex = /\<input class\=btn\-sm id\=\.[ \.A-Za-z\(\)]+ type\=button value\=\"(\w+)\"\/\>/g;
+const authorRegex = /\<input class\=btn\-sm id\=\.[ \w]+ type\=button (value=)/g;
+// let output = authorRegex.exec(temp);
+let output = temp.match(authorRegex);
+console.log(output);

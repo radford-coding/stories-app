@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -79,7 +79,6 @@ button[type="submit"] {
     margin-top: 1vmin;
     display: block;
     padding: 0.5vmin;
-    /* border-radius: 5px; */
 }
 
 textarea {
@@ -95,7 +94,6 @@ textarea {
 .card-wrapper {
     text-decoration: none;
     color: inherit;
-    /* flex: 1 0 500px; */
 }
 
 .card {
@@ -130,4 +128,15 @@ textarea {
 
 .story-container > p {
     margin: 1rem 0;
+} */
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cards > a {
+    text-decoration: none;
 }

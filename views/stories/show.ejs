@@ -4,24 +4,25 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1><%= story.name %></h1>
-    <h2>by <a href="/users/<%= story.owner._id %>"><%= story.owner.alias %></a></h2>
+    <h1 class="text-center mt-4"><%= story.name %></h1>
+    <h2 class="text-center">by <a href="/users/<%= story.owner._id %>"><%= story.owner.alias %></a></h2>
     <br>
     <% if (editPrivilege) { %>
     <form action="/stories/<%= story._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= story.name %></button>
     </form>
-    <% }; %>
     <br><br>
+    <% }; %>
     <% if (editPrivilege) { %>
     <a href="/stories/<%= story._id %>/edit"><input type="button" value="Edit <%= story.name %>"></a>
     <br><br>
     <% }; %>
-    <div class="story-container">
+    <div class="m-4 p-4">
         <%- story.body.split('\n').map(t => `<p>${t}</p>`).join(''); %>
     </div>
 
     <br><br>
+    <form action=""></form>
 
 </body>
 

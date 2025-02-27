@@ -19,7 +19,6 @@ const storySchema = new mongoose.Schema({
     },
     vibes: [{
         type: String,
-        default: [],
     }],
 });
 
