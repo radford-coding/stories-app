@@ -28,13 +28,7 @@ p {
 }
 
 
-.reveal-if-active {
-    display: none;
-}
 
-input[type="checkbox"]:checked~.reveal-if-active {
-    display: inline;
-}
 
 form {
     margin: 0 auto;
@@ -130,6 +124,10 @@ textarea {
     margin: 1rem 0;
 } */
 
+/* .reveal-if-active {
+    display: none;
+} */
+
 
 .cards {
     display: flex;
@@ -147,4 +145,8 @@ textarea {
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"]:not(:checked)~.reveal-if-active {
+    background-color: green;
 }

@@ -10,9 +10,9 @@
         <button type="submit">Delete <%= userFound.username %></button>
     </form>
     <% } else if (userFound.userType === 'author') { %>
-        <div class="bio">
-            <p><%= userFound.bio %></p>
-        </div>
+    <div class="bio">
+        <p><%= userFound.bio %></p>
+    </div>
     <% }; %>
     <div class="cards py-2 mt-0">
         <% stories.forEach(story => { %>

@@ -4,7 +4,7 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1>edit <%= story.name %></h1>
+    <h1 class="m-4 text-center">edit <%= story.name %></h1>
     <form action="/stories/<%= story._id %>?_method=PUT" method="POST">
         <label for="name">story name:</label>
         <input type="text" name="name" value="<%= story.name %>">
