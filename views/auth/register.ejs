@@ -9,20 +9,21 @@
         <div class="form-group row mb-2">
             <label for="username" class="col-sm-3 offset-sm-2 col-form-label">username (required)</label>
             <div class="col-sm-7">
-                <input type="text" name="username" id="username" required pattern="^\w{6,24}$" class="form-control">
+                <input type="text" name="username" id="username" required onchange="usernameComplexity()" class="form-control">
             </div>
         </div>
         <div class="form-group row mb-2">
             <label for="password" class="col-sm-3 offset-sm-2 col-form-label">password (required)</label>
             <div class="col-sm-7">
-                <input type="password" name="password" id="password" required onchange="pwdVerify()"
+                <input type="password" name="password" id="password" required onchange="pwdComplexity()"
                     class="form-control">
             </div>
         </div>
         <div class="form-group row mb-2">
             <label for="confirmPassword" class="col-sm-3 offset-sm-2 col-form-label">confirm password:</label>
             <div class="col-sm-7">
-                <input type="password" name="confirmPassword" id="confirmPassword" required onchange="pwdVerify()" class="form-control">
+                <input type="password" name="confirmPassword" id="confirmPassword" required onchange="pwdVerify()"
+                    class="form-control">
             </div>
         </div>
         <div class="form-group row mb-2">
