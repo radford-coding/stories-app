@@ -37,10 +37,10 @@ const getShortStories = async () => {
     };
 };
 
-let temp = await getShortStories();
-// console.log(temp);
+let temp2 = await getShortStories();
+// console.log(temp2);
 // const authorRegex = /\<input class\=btn\-sm id\=\.[ \.A-Za-z\(\)]+ type\=button value\=\"(\w+)\"\/\>/g;
 const authorRegex = /\<input class\=btn\-sm id\=\.[ \w]+ type\=button (value=)/g;
-// let output = authorRegex.exec(temp);
-let output = temp.match(authorRegex);
+// let output = authorRegex.exec(temp2);
+let output = temp2.match(authorRegex);
 console.log(output);
