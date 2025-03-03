@@ -25,7 +25,6 @@ Functionality:
 ## Helpful resources I used
 1. [making JS API requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 2. [custom client-side form validation](https://stackoverflow.com/a/61873952)
-3. [ChatGPT API for generating stories](https://medium.com/design-bootcamp/how-to-build-a-story-generator-using-openais-gpt-3-and-javascript-d3697e1814f2)
 
 
 ## Sources of short stories - APIs and copy/paste
@@ -35,7 +34,7 @@ Functionality:
 
 ## Future aspirations
 1. make the site more zen
-2. add an AI story generator option
+2. add an [AI](https://medium.com/design-bootcamp/how-to-build-a-story-generator-using-openais-gpt-3-and-javascript-d3697e1814f2) story generator option
 3. add more stories to the app
 4. suggest a story based on mood
 5. add (hideable) comments to stories
