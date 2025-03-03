@@ -90,11 +90,7 @@ router.get('/search', async (req, res) => {
 });
 
 router.post('/search', (req, res) => {
-    // console.log(`title: ${req.body.titleSearch}`);
-    // console.log(`author: ${req.body.authorSearch}`);
     const queryString = req.body.titleSearch ? 'titleSearch=' + req.body.titleSearch : '';
-    // ${req.body.authorSearch ? '&authorSearch=' + req.body.authorSearch : ''}
-
     res.redirect(`/stories/search?${queryString}`);
 });
 

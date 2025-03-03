@@ -12,10 +12,12 @@ Functionality:
 - search all the stories and authors on the app
 
 ## Technologies used
-1. MongoDB
-2. Express
-3. Node.js - bcryptjs, bootstrap, dotenv, ejs, express, express-session, method-override, mongoose, morgan
-4.  Deployment on Heroku
+1. MongoDB database
+2. ExpressJS app
+3. Node.js development
+4. EJS views
+4. Bootstrap styling
+4. Deployment on Heroku
 
 
 ## Helpful resources I used
