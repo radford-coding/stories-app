@@ -1,8 +1,10 @@
+![screenshot of app](./public/images/stories-app-screenshot.png)
+
 # Stories App
 
 An app for cozying up and reading a short story, or writing your own. Find some new stories that might surprise you, or enjoy an old favorite.
 
-Try it [here](https://short-stories-7f5bc97d5268.herokuapp.com/auth/login)!
+Try it [here](https://short-stories-7f5bc97d5268.herokuapp.com/)!
 Planning [Trello board](https://trello.com/b/aVcrsK0B/project-2-short-stories-app)
 
 Functionality:
@@ -26,7 +28,7 @@ Functionality:
 3. [ChatGPT API for generating stories](https://medium.com/design-bootcamp/how-to-build-a-story-generator-using-openais-gpt-3-and-javascript-d3697e1814f2)
 
 
-## Sources of short stories
+## Sources of short stories - APIs and copy/paste
 1. [Aesop's Fables API](https://github.com/poseidon-code/shortstories-api)
 2. [longer short stories](https://americanliterature.com/home/)
 3. [more short stories](https://github.com/GautamPatil1/Short_Stories_API/tree/main)
